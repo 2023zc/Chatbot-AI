@@ -1,4 +1,4 @@
-package org.example.chatbot.api;
+package org.example;
 
 
 import org.springframework.boot.SpringApplication;
