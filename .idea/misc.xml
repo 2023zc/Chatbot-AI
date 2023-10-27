@@ -5,6 +5,10 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/chatbot-api-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/chatbot-api-interfaces/pom.xml" />
+        <option value="$PROJECT_DIR$/chatbot-api-application/testAPI/pom.xml" />
       </list>
     </option>
   </component>
