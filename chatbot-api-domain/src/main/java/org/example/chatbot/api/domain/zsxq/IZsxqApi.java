@@ -1,4 +1,4 @@
-package org.example.chatbot.api.domain;
+package org.example.chatbot.api.domain.zsxq;
 
 import org.example.chatbot.api.domain.zsxq.aggregates.UnAnsweredquestionAggregates;
 

@@ -2,7 +2,7 @@ package org.example.chatbot.api.test;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
-import org.example.chatbot.api.domain.IZsxqApi;
+import org.example.chatbot.api.domain.zsxq.IZsxqApi;
 import org.example.chatbot.api.domain.zsxq.aggregates.UnAnsweredquestionAggregates;
 import org.example.chatbot.api.domain.zsxq.vo.Topics;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @SpringBootTest
 @Slf4j
-public class SpringBootTestApi {
+public class zxsqApiTest {
 
     @Value("${chatbot.groupId}")
     private String groupId;

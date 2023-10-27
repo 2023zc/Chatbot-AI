@@ -1,4 +1,4 @@
-package org.example.chatbot.api.domain.service;
+package org.example.chatbot.api.domain.zsxq.service;
 
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSON;
@@ -11,7 +11,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.example.chatbot.api.domain.IZsxqApi;
+import org.example.chatbot.api.domain.zsxq.IZsxqApi;
 import org.example.chatbot.api.domain.zsxq.aggregates.UnAnsweredquestionAggregates;
 import org.example.chatbot.api.domain.zsxq.req.AnswerReq;
 import org.example.chatbot.api.domain.zsxq.req.ReqDate;
