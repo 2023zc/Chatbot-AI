@@ -1,6 +1,5 @@
 package org.example.chatbot.api.application.job;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.example.chatbot.api.domain.AI.IOpenAI;
 import org.example.chatbot.api.domain.zsxq.IZsxqApi;
@@ -46,11 +45,11 @@ public class ChatbotSchedule {
             //获取当前小时,在指定时间停止回复
             GregorianCalendar calendar=new GregorianCalendar();
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
-            if(hour>23 || hour<6){
+            //夜晚的时候停止回复
+            if(hour>22 || hour<6){
                 log.info("AI下班了...");
                 return;
             }
-
 
             //使曲线平滑,防止风控
             boolean flag= new Random().nextBoolean();
