@@ -24,10 +24,8 @@ import java.io.IOException;
 @Slf4j
 public class OpenAI implements IOpenAI {
 
-    @Value("${chatbot.key}")
-    private String openaiKey;
     @Override
-    public String doQuery(String question) throws IOException {
+    public String doQuery(String question,String openaiKey) throws IOException {
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost request = new HttpPost("https://api.chatanywhere.com.cn/v1/chat/completions");
 

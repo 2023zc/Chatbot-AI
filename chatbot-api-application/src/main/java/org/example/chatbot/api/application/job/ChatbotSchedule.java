@@ -5,13 +5,6 @@ import org.example.chatbot.api.domain.AI.IOpenAI;
 import org.example.chatbot.api.domain.zsxq.IZsxqApi;
 import org.example.chatbot.api.domain.zsxq.aggregates.UnAnsweredquestionAggregates;
 import org.example.chatbot.api.domain.zsxq.vo.Topics;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -20,27 +13,34 @@ import java.util.Random;
 /**
  * 定时任务实现回答问题
  */
-@EnableScheduling
-@Configuration
 @Slf4j
-public class ChatbotSchedule {
+public class ChatbotSchedule implements Runnable{
 
-    @Value("${chatbot.groupId}")
+    private String groupName;
+
     private String groupId;
 
-    @Value("${chatbot.cookie}")
     private String cookie;
 
-    @Autowired
+    private String key;
+
     private IZsxqApi iZsxqApi;
 
-    @Autowired
     private IOpenAI iOpenAI;
 
 
+    public ChatbotSchedule(String groupName, String groupId, String cookie, String key, IZsxqApi iZsxqApi, IOpenAI iOpenAI) {
+        this.groupName = groupName;
+        this.groupId = groupId;
+        this.cookie = cookie;
+        this.key = key;
+        this.iZsxqApi = iZsxqApi;
+        this.iOpenAI = iOpenAI;
+    }
+
     //cron在线生成工具:https://cron.qqe2.com/
-    @Scheduled(cron = "0/10 * * * * ?")
-    public void run() throws IOException {
+    @Override
+    public void run(){
         try {
             //获取当前小时,在指定时间停止回复
             GregorianCalendar calendar=new GregorianCalendar();
@@ -73,7 +73,7 @@ public class ChatbotSchedule {
             String topicId=topic.getTopic_id();
 
             //3.调用openAI回答问题
-            String answer = iOpenAI.doQuery(question);
+            String answer = iOpenAI.doQuery(question,key);
 
             //4.回显给用户
             boolean status = iZsxqApi.answer(groupId, cookie, topicId, answer, false);
@@ -81,7 +81,6 @@ public class ChatbotSchedule {
         }
         catch (Exception e){
             log.error("自动回答问题异常:"+e);
-
         }
     }
 

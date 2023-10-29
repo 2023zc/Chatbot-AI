@@ -60,7 +60,7 @@ public class ChatGPTApiTest {
     @Test
     public void test_openAI() throws IOException {
         String question="世界奇观有哪些?";
-        String answer = iOpenAI.doQuery(question);
+        String answer = iOpenAI.doQuery(question,key);
         log.info("回答结果: {}",answer);
     }
 
